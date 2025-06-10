@@ -1,0 +1,1 @@
+console.log("Connecting to the database...");
