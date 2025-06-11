@@ -1,4 +1,4 @@
-//Initialize environment variables and import necessary modules
+// Initialize environment variables and import necessary modules
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -6,18 +6,18 @@ const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Removed unused API_KEY, MODEL_NAME, and TEMPERATURE variables
 
-//Middleware setup
+// Middleware setup for CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
 
-// Initialize GoogleGenAI with API key
+// Initialize GoogleGenAI with API key from environment variables
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// In-memory chat history (shared for all users in this simple example)
 let chatHistory = [];
 
-//System instructions for the AI
+// System instructions for the AI's behavior and available products
 const systemPrompt = `
 You are Tina, an AI insurance consultant. You help users choose the right insurance policy by asking appropriate questions and then making a final recommendation.
 Only ask questions after the user agrees to be interviewed.
