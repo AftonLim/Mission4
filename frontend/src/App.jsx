@@ -16,6 +16,8 @@ function App() {
   const [input, setInput] = useState("");
   // State to indicate if a request is in progress
   const [loading, setLoading] = useState(false);
+// Base URL for the API, can be set via environment variable
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   // Handles sending a message when the user submits input
   const handleSubmit = async () => {
@@ -32,7 +34,7 @@ function App() {
 
     try {
       // Send the user's message to the backend API
-      const response = await axios.post("http://localhost:3001/chat", { message: input }); 
+      const response = await axios.post(`${API_BASE_URL}/chat`, { message: input });
       // Add the AI's response to the chat
       const aiMessage = {
         sender: "ai",
