@@ -32,7 +32,7 @@ function App() {
 
     try {
       // Send the user's message to the backend API
-      const response = await axios.post("http://localhost:3000/api/chat", { message: input }); 
+      const response = await axios.post("http://localhost:3001/chat", { message: input }); 
       // Add the AI's response to the chat
       const aiMessage = {
         sender: "ai",
